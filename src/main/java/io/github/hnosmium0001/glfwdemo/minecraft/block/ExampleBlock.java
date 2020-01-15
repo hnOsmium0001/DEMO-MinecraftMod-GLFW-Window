@@ -1,6 +1,6 @@
-package io.github.hnosmium0001.hcdemo.block;
+package io.github.hnosmium0001.glfwdemo.minecraft.block;
 
-import io.github.hnosmium0001.hcdemo.gui.ExampleGUI;
+import io.github.hnosmium0001.glfwdemo.minecraft.gui.ExampleGUI;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;

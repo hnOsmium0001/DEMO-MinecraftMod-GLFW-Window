@@ -1,5 +1,6 @@
-package io.github.hnosmium0001.hcdemo.gui;
+package io.github.hnosmium0001.glfwdemo.minecraft.gui;
 
+import io.github.hnosmium0001.glfwdemo.glfw.GLFWApplication;
 import net.minecraft.util.text.StringTextComponent;
 import powerlessri.harmonics.gui.debug.RenderEventDispatcher;
 import powerlessri.harmonics.gui.screen.WidgetScreen;
@@ -20,6 +21,8 @@ public class ExampleGUI extends WidgetScreen {
     protected void init() {
         super.init();
         setPrimaryWindow(new Window());
+
+        GLFWApplication.startApplication(new GLFWApplication());
     }
 
     public static class Window extends AbstractWindow {

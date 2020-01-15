@@ -1,6 +1,6 @@
-package io.github.hnosmium0001.hcdemo;
+package io.github.hnosmium0001.glfwdemo.minecraft;
 
-import io.github.hnosmium0001.hcdemo.block.ExampleBlock;
+import io.github.hnosmium0001.glfwdemo.minecraft.block.ExampleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod(DemoMod.MODID)
 public class DemoMod {
 
-    public static final String MODID = "hcdemo";
+    public static final String MODID = "glfwdemo";
 
     public DemoMod() {
         exampleBlock = new ExampleBlock(Block.Properties.create(Material.ROCK));
