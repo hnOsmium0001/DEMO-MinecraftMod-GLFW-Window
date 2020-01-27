@@ -1,5 +1,8 @@
 package io.github.hnosmium0001.glfwdemo.glfw;
 
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GLCapabilities;
+
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
@@ -18,6 +21,11 @@ public class GLFWApplication implements Runnable {
         glfwDefaultWindowHints();
 
         long window = glfwCreateWindow(600, 400, "Test Window", 0L, 0L);
+        if (window == 0L) {
+            throw new RuntimeException("Failed to create GLFW window");
+        }
+        glfwMakeContextCurrent(window);
+        GL.createCapabilities();
 
         glfwSetFramebufferSizeCallback(window, this::framebufferSizeCallback);
         glfwSetKeyCallback(window, this::keyCallback);
@@ -27,10 +35,6 @@ public class GLFWApplication implements Runnable {
 
         try {
             while (!glfwWindowShouldClose(window)) {
-                // Since both minecraft and this demo has a window, we need to set GLFW context every frame to ensure
-                // our OpenGL code runs on the correct context
-                glfwMakeContextCurrent(window);
-
                 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                 glClearColor(0.2f, 0.4f, 0.4f, 1.0f);
 
