@@ -1,14 +1,15 @@
-modLoader="javafml"
-loaderVersion="[28,)"
-issueTrackerURL="https://github.com/hnOsmium0001/GLFWWindow-Demo/issues"
+modLoader="kotlinfml"
+loaderVersion="[1,)"
+
 [[mods]]
-modId="glfwdemo"
-version="${file.jarVersion}"
-displayName="HarmonicsCore Demo"
-displayURL="https://github.com/hnOsmium0001/GLFWWindow-Demo"
-authors="hnOsmium0001"
-description='''
-'''
+    modId="glfwdemo"
+    version="${file.jarVersion}"
+    displayName="GLFW Demo"
+    displayURL="https://github.com/hnOsmium0001/GLFWWindow-Demo"
+    issueTrackerURL="https://github.com/hnOsmium0001/GLFWWindow-Demo/issues"
+    authors="hnOsmium0001"
+    description='''
+    '''
 
 [[dependencies.glfwdemo]]
     modId="forge"

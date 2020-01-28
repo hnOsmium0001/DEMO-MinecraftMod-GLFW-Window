@@ -5,13 +5,17 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath(group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true) {
+            exclude group: 'trove', module: 'trove'
+        }
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'kotlin'
 
 version = '1.0'
 group = 'io.github.hnosmium0001.glfwdemo'
@@ -50,21 +54,6 @@ minecraft {
                 }
             }
         }
-
-        data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'glfwdemo', '--all', '--output', file('src/generated/resources/')
-
-            mods {
-                glfwdemo {
-                    source sourceSets.main
-                }
-            }
-        }
     }
 }
 
@@ -73,26 +62,40 @@ repositories {
         name "CurseForge"
         url "https://minecraft.curseforge.com/api/maven/"
     }
+    maven {
+        url 'https://jitpack.io'
+    }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.14.4-28.1.61'
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
     // Curseforge Maven
-     compile "harmonics-core:HarmonicsCore-${mc_version}:${harmonics_core_version}:source"
+    implementation "kottle:Kottle:$kottle_version"
+    implementation "harmonics-core:HarmonicsCore-${mc_version}:${harmonics_core_version}:source"
+
+    ["gl", "glfw", "core"].each {
+        implementation("com.github.kotlin-graphics.imgui:imgui-$it:-SNAPSHOT") {
+            exclude group: "org.lwjgl"
+        }
+    }
+    implementation 'com.github.kotlin-graphics:uno-sdk:f528113bf45e43406953d6881915467d85a20881'
+    implementation 'com.github.kotlin-graphics.glm:glm:1b4ac18dd1a3c23440d3f33596688aac60bc0141'
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
 jar {
     manifest {
         attributes([
-            "Specification-Title": "glfwdemo",
-            "Specification-Vendor": "glfwdemosareus",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"glfwdemosareus",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Specification-Title"     : "glfwdemo",
+                "Specification-Vendor"    : "glfwdemosareus",
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : "${version}",
+                "Implementation-Vendor"   : "glfwdemosareus",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
