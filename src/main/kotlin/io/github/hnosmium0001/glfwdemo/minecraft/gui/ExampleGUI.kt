@@ -1,6 +1,7 @@
 package io.github.hnosmium0001.glfwdemo.minecraft.gui
 
 import io.github.hnosmium0001.glfwdemo.glfw.GLFWApplication
+import io.github.hnosmium0001.glfwdemo.glfw.JImGuiApplication
 import net.minecraft.util.text.StringTextComponent
 import powerlessri.harmonics.gui.debug.RenderEventDispatcher
 import powerlessri.harmonics.gui.screen.WidgetScreen
@@ -13,16 +14,15 @@ class ExampleGUI : WidgetScreen(StringTextComponent("test")) {
     override fun init() {
         super.init()
         primaryWindow = Window()
-        GLFWApplication.startApplication(GLFWApplication())
+//        GLFWApplication.startApplication(GLFWApplication())
+        JImGuiApplication.startApplication(JImGuiApplication())
     }
 
     class Window : AbstractWindow() {
         private val children: MutableList<IWidget> = ArrayList()
-        override fun getBorderSize(): Int {
-            // Size of vanilla GUI borders
-            // Can be any positive number, depending on the need
-            return 4
-        }
+        // Size of vanilla GUI borders
+        // Can be any positive number, depending on the need
+        override fun getBorderSize(): Int = 4
 
         override fun getChildren(): List<IWidget> {
             return children

@@ -57,7 +57,17 @@ minecraft {
     }
 }
 
+// Gradle doesn't seem to work with this; might be incompatible on MacOS
+//import org.gradle.internal.os.OperatingSystem
+//
+//run {
+//    if (OperatingSystem.current() == OperatingSystem.MAC_OS) {
+//        jvmArgs "-XstartOnFirstThread"
+//    }
+//}
+
 repositories {
+    jcenter()
     maven {
         name "CurseForge"
         url "https://minecraft.curseforge.com/api/maven/"
@@ -76,13 +86,16 @@ dependencies {
     implementation "kottle:Kottle:$kottle_version"
     implementation "harmonics-core:HarmonicsCore-${mc_version}:${harmonics_core_version}:source"
 
-    ["gl", "glfw", "core"].each {
-        implementation("com.github.kotlin-graphics.imgui:imgui-$it:-SNAPSHOT") {
-            exclude group: "org.lwjgl"
-        }
-    }
-    implementation 'com.github.kotlin-graphics:uno-sdk:f528113bf45e43406953d6881915467d85a20881'
-    implementation 'com.github.kotlin-graphics.glm:glm:1b4ac18dd1a3c23440d3f33596688aac60bc0141'
+//    ["gl", "glfw", "core"].each {
+//        implementation("com.github.kotlin-graphics.imgui:imgui-$it:-SNAPSHOT") {
+//            exclude group: "org.lwjgl"
+//        }
+//    }
+//    implementation 'com.github.kotlin-graphics:uno-sdk:f528113bf45e43406953d6881915467d85a20881'
+//    implementation 'com.github.kotlin-graphics.glm:glm:1b4ac18dd1a3c23440d3f33596688aac60bc0141'
+
+    implementation "org.ice1000.jimgui:core:$jimgui_version"
+    implementation "org.ice1000.jimgui:kotlin-dsl:$jimgui_version"
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

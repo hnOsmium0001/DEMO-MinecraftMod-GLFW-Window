@@ -1,6 +1,6 @@
 //package io.github.hnosmium0001.glfwdemo.minecraft.block
 //
-//import io.github.hnosmium0001.glfwdemo.minecraft.gui.ImGuiGUI
+//import io.github.hnosmium0001.glfwdemo.minecraft.gui.JImGuiGUI
 //import net.minecraft.block.Block
 //import net.minecraft.block.BlockState
 //import net.minecraft.client.Minecraft
@@ -10,10 +10,10 @@
 //import net.minecraft.util.math.BlockRayTraceResult
 //import net.minecraft.world.World
 //
-//class ImGuiBlock(properties: Properties) : Block(properties) {
-//    override fun onBlockActivated(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hand: Hand, rayTraceResult: BlockRayTraceResult): Boolean {
+//class JImGuiBlock(properties: Properties) : Block(properties) {
+//    override fun onBlockActivated(state: BlockState?, world: World, pos: BlockPos?, player: PlayerEntity?, hand: Hand?, rayTraceResult: BlockRayTraceResult?): Boolean {
 //        if (world.isRemote) {
-//            Minecraft.getInstance().displayGuiScreen(ImGuiGUI())
+//            Minecraft.getInstance().displayGuiScreen(JImGuiGUI())
 //        }
 //        return true
 //    }
